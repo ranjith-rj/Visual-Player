@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <title>GTV Player</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">▶</span><span>GTV Player</span></div>
+    <div class="source-wrap">
+      <input id="playlistUrl" type="url" value="http://192.168.1.7:5350/playlist.m3u" aria-label="M3U playlist URL" placeholder="M3U / M3U8 playlist URL">
+      <button id="loadUrl" class="primary">Load Playlist</button>
+      <label class="file-btn">Open M3U <input id="playlistFile" type="file" accept=".m3u,.m3u8,text/plain"></label>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <strong>Channels</strong><span id="channelCount">0</span>
+      </div>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search channels…" aria-label="Search channels">
+        <select id="groupFilter" aria-label="Filter by group"><option value="">All groups</option></select>
+      </div>
+      <div id="channelList" class="channel-list"></div>
+    </aside>
+
+    <section class="player-area">
+      <div class="video-shell">
+        <video id="video" controls playsinline></video>
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">▶</div>
+          <h1>GTV Player</h1>
+          <p>Load your M3U playlist, then select a channel.</p>
+          <p class="hint">Your default playlist is pre-filled above.</p>
+        </div>
+        <div id="loading" class="loading hidden">Loading channel…</div>
+      </div>
+      <div class="now-playing">
+        <div>
+          <div id="nowTitle" class="now-title">No channel selected</div>
+          <div id="nowGroup" class="now-group">—</div>
+        </div>
+        <button id="favoriteBtn" class="icon-btn" title="Favorite channel" aria-label="Favorite channel">☆</button>
+      </div>
+      <div class="info-card">
+        <h2>About this player</h2>
+        <p>This is a browser-based IPTV player for M3U playlists. It supports HLS streams (<code>.m3u8</code>) and formats natively supported by your browser.</p>
+        <p class="warning">If your playlist is on a private address such as <code>192.168.1.7</code>, open this page from a device that can reach that network. The IPTV server must also allow browser requests (CORS).</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
