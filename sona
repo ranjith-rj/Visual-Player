@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sona 💗</title>
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  text-align: center;
+  font-family: Georgia, serif;
+  color: #74364e;
+  background: linear-gradient(145deg,#ffe2ea,#fff8fa,#ffd5e1);
+  overflow-x: hidden;
+}
+#floaters {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.float {
+  position: absolute;
+  top: -45px;
+  animation: rain linear forwards;
+}
+@keyframes rain {
+  to {
+    transform: translateY(115vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+main {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 700px;
+  margin: auto;
+  padding: 50px 0;
+}
+h1 { font-size: 65px; font-weight: normal; }
+h1 em { color: #e85d83; }
+.card {
+  background: #ffffffdc;
+  padding: 35px;
+  border-radius: 25px;
+  box-shadow: 0 15px 45px #a8446520;
+}
+.message {
+  font-size: 20px;
+  line-height: 1.8;
+}
+button {
+  background: #e85d83;
+  color: white;
+  border: 0;
+  border-radius: 30px;
+  padding: 15px 25px;
+  margin: 15px 5px;
+  cursor: pointer;
+}
+#surprise {
+  display: none;
+  font-size: 22px;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<div id="floaters"></div>
+
+<main>
+  <p>A LITTLE NOTE FROM MY HEART</p>
+  <h1>Dear <em>Sona</em> 💗</h1>
+
+  <p>I know you're upset with me.
+  I made this little corner of the internet just for you.</p>
+
+  <section class="card">
+    <div style="font-size:50px">🥺💌</div>
+    <h2>Can I say something?</h2>
+
+    <div class="message">
+      <p>Sona, I'm sorry for hurting you.</p>
+
+      <p>You deserve to be heard,
+      respected, and treated with care.</p>
+
+      <p>I'm not asking you to forgive me
+      straight away.</p>
+
+      <p>I just want you to know
+      that you're important to me.</p>
+
+      <p>When you're ready, I'd love to listen,
+      understand, and make things right.</p>
+    </div>
+
+    <h3>With love, always ❤️</h3>
+  </section>
+
+  <button onclick="reveal()">One little surprise 💌</button>
+  <button onclick="hearts(40)">Rain more love 💗</button>
+
+  <div id="surprise">
+    You are special, Sona. 🌷<br>
+    No matter what, I hope you smile today. ❤️
+  </div>
+</main>
+
+<script>
+function reveal() {
+  document.getElementById("surprise").style.display = "block";
+  hearts(40);
+}
+
+function hearts(count = 20) {
+  const area = document.getElementById("floaters");
+
+  for(let i = 0; i < count; i++) {
+    const el = document.createElement("span");
+    el.className = "float";
+    el.innerHTML = ["❤️","💗","💕","🌸","♡"][
+      Math.floor(Math.random()*5)
+    ];
+
+    el.style.left = Math.random()*100 + "vw";
+    el.style.fontSize = (15 + Math.random()*25) + "px";
+    el.style.animationDuration = (5 + Math.random()*6) + "s";
+
+    area.appendChild(el);
+    setTimeout(() => el.remove(), 11000);
+  }
+}
+
+hearts(30);
+setInterval(() => hearts(5), 650);
+</script>
+</body>
+</html>
